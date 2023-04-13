@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>COVID-19 Cases Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>COVID-19 Cases Prediction</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <select name="country" id="country" required>
+                <option value="">--Select a country--</option>
+                <option value="India">India</option>
+                <option value="United_States_of_America">USA</option>
+                <option value="Brazil">Brazil</option>
+            </select>
+            <br><br>
+            <input type="submit" name="submit" value="Submit">
+        </form>
+
+        {% if image %}
+            <h2>Predicted COVID-19 Cases for {{ selected_country }}:</h2>
+            <img src="data:image/png;base64,{{ image }}" alt="COVID-19 Cases Prediction Plot">
+            <p>RMSE: {{ rmse }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
